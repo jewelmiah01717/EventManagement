@@ -1,0 +1,117 @@
+﻿<div ng-controller="memberctrl">
+    <h2 style="text-align: left">List</h2>
+    <div class="container">
+        <form class="form-horizontal" id="frm" name="frm">
+            <div class="form-group">
+                <label class="control-label col-sm-2" ng-model="addmember.ID"></label>
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Name : </p>
+                <input type="text" class="form-control" ng-model="addmember.Name" id="name" name="name" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Father's Name : </p>
+                <input type="text" class="form-control" ng-model="addmember.FatherName" id="fname" name="fname" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Mother's Name : </p>
+                <input type="text" class="form-control" ng-model="addmember.MotehrName" id="mname" name="mname" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Age : </p>
+                <input type="text" class="form-control" ng-model="addmember.Age" id="age" name="age" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Gender : </p>
+                <input type="text" class="form-control" ng-model="addmember.Gender" id="gender" name="gender" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Mobile : </p>
+                <input type="text" class="form-control" ng-model="addmember.Mobile" id="mob" name="mob" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Email : </p>
+                <input type="text" class="form-control" ng-model="addmember.Email" id="email" name="email" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Parmanent Address : </p>
+                <input type="text" class="form-control" ng-model="addmember.ParmanentAddress" id="paddress" name="paddress" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Present Address : </p>
+                <input type="text" class="form-control" ng-model="addmember.PresentAddress" id="pread" name="pread" />
+            </div>
+            <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                <p> Image : </p>
+                <input type="text" class="form-control" ng-model="addmember.Image" id="img" name="img" />
+            </div>         
+            <div class="form-group">             
+                    <button type="submit" class="btn btn-primary btn-md" ng-click="save()" ng-disabled="frm.$invalid">Save</button>
+                    <button type="submit" class="btn btn-primary btn-md" ng-click="update()" ng-disabled="frm.$invalid">Update</button>               
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">Name</th>
+                <th style="text-align:center">Father's Name</th>
+                <th style="text-align:center">Mother's Name</th>
+                <th style="text-align:center">Age</th>
+                <th style="text-align:center">Gender</th>
+                <th style="text-align:center">Mobile</th>
+                <th style="text-align:center">Email</th>
+                <th style="text-align:center">Parmanent Address</th>
+                <th style="text-align:center">Present Address</th>
+                <th style="text-align:center">Image</th>
+                <th style="text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in members">
+                <td>
+                    {{b.Name}}
+                </td>
+                <td>
+                    {{b.FatherName}}
+                </td>
+                <td>
+                    {{b.MotehrName}}
+                </td>
+                <td>
+                    {{b.Age}}
+                </td>
+                <td>
+                    {{b.Gender}}
+                </td>
+                <td>
+                    {{b.Mobile}}
+                </td>
+                <td>
+                    {{b.Email}}
+                </td>
+                <td>
+                    {{b.ParmanentAddress}}
+                </td>
+                <td>
+                    {{b.PresentAddress}}
+                </td>
+                <td>
+                    {{b.Image}}
+                </td>
+
+                <td>
+                    <button class="btn btn-primary btn-md" ng-click="delete(b.ID)"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-primary btn-md" ng-click="edit(b.ID)"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-primary btn-md" ng-click="issue(b.ID)"><span class="glyphicon glyphicon-book"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+

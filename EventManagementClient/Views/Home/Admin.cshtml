@@ -1,0 +1,63 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<ng-view></ng-view>
+
+
+@section scripts{
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/angular-route.min.js"></script>
+<script>
+
+    angular.module("routapp", ['ngRoute'])
+        .config(function ($locationProvider, $routeProvider) {
+            //$locationProvider.html5Mode({
+            //    enabled: true,
+            //    requireBase: false
+            //});
+            $locationProvider.hashPrefix('');
+            $routeProvider
+                .when('/Admin', {
+                    templateUrl: "/HTML/AdLogin.html"
+                })
+                .when('/Member', {
+                    templateUrl: '/App/View/Member.html',
+                    //  controller: "memberctrl"
+                }).when('/Book', {
+                    templateUrl: '/App/View/Book.html'
+                }).when('/Category', {
+                    templateUrl: '/App/View/Category.html'
+                }).when('/Purchase', {
+                    templateUrl: '/App/View/Purchase.html'
+                }).when('/Rack', {
+                    templateUrl: '/App/View/Rack.html'
+                }).when('/UserLogin', {
+                    templateUrl: '/App/View/UserLogin.html'
+                })
+                .otherwise({
+                    templateUrl: 'Layout.html'
+                })
+        }).controller("mainctrl", function ($scope) {
+            //$scope.message = "Home page";
+        })
+
+
+</script>
+
+
+<script src="~/App/factory/remotecall.js"></script>
+<script src="~/App/Controller/Member.js"></script>
+
+<script src="~/App/Controller/Booksctrl.js"></script>
+<script src="~/App/Controller/Categoriesctrl.js"></script>
+<script src="~/App/Controller/purchase.js"></script>
+<script src="~/App/Controller/rackctrl.js"></script>
+    @*
+<script src="~/HTML/AngularJS/signup.js"></script>
+<script src="~/HTML/AngularJS/login.js"></script>*@
+
+
+}

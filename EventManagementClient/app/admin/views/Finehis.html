@@ -1,0 +1,55 @@
+﻿<div ng-controller="finehisctrl">
+    <h2 style="text-align:center">History of Fine</h2>
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText" placeholder="search by book name" class="form-control" id="bn" name="bn" />
+
+        </div>
+    </form>
+   
+    <table class="table table-hove" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">#</th>
+                <th style="text-align:center">Username</th>
+                <th style="text-align:center">BookId</th>
+                <th style="text-align:center">Issue Date</th>
+                <th style="text-align:center">Due Date</th>
+                <th style="text-align:center">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in finehis|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>
+                    {{b.Id}}
+                </td>
+                <td>
+                    {{b.username}}
+                </td>
+                <td>
+                    {{b.BookId}}
+                </td>
+                <td>
+                    {{b.IssueDate}}
+                </td>
+                <td>
+                    {{b.DueDate}}
+                </td>
+                <td>
+                    {{b.amount}}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in finehis|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">Page-{{$index+1}}</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+
+
+

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <!--<script src="App/Controller/Purchasectrl.js"></script>-->
+    <script>
+      
+        var app = angular.module("myapp", []).controller("myctrl", function ($scope, $http) {
+            $scope.Purchase = [];
+            $http({
+                method: "GET",
+                url: "http://localhost:3502/odata/Purchases"
+            }).then(function (result) {
+                $scope.Purchase = result.data.value;
+            })
+        })
+    </script>
+
+</head>
+
+<body ng-controller="myctrl">
+    <div>
+        <p>
+            {{error}}
+        </p>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Purchase Date</th>
+                <th>Purchase From</th>
+                <th>Purchase Number</th>
+                <th>Book Name</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in Purchase">
+                <td>{{p.PurDate}}</td>
+                <td>{{p.PurFrom}}</td>
+                <td>{{p.PurNo}}</td>
+                <td>{{p.PurchaseBookName}}</td>
+                <td>{{p.Quantity}}</td>
+                <td>{{p.Rate}}</td>
+                <td>{{p.Amount}}</td>
+                <td>{{p.Status}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <!--<script src="App/Controller/Purchasectrl.js"></script>-->
+    <script>
+       
+        var app = angular.module("myapp", []).controller("myctrl", function ($scope, $http) {
+            $scope.Purchase = [];
+            $http({
+                method: "GET",
+                url: "http://localhost:3502/odata/Purchases"
+            }).then(function (result) {
+                $scope.Purchase = result.data.value;
+            })
+        })
+    </script>
+
+</body>
+</html>

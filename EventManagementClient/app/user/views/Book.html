@@ -1,0 +1,69 @@
+﻿<div ng-controller="bookctrl">
+    <h2 style="text-align:left">Product</h2>
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText" placeholder="search by book name" class="form-control" id="bn" name="bn" />
+        </div>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th style="text-align:center" ng-click="sort('BookName')">
+                    Product Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='BookName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                
+               
+                <th style="text-align:center" ng-click="sort('BookAuth')">
+                    Product Author
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='BookAuth'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th>AvilableProduct</th>
+                <!--<th>IssueBook</th>
+                <th>Rack</th>-->
+                <th>Category</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in books|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>
+                    {{b.Id}}
+                </td>
+                <td>
+                    {{b.BookName}}
+                </td>
+                <td>
+                    {{b.BookAuth}}
+                </td>
+                <td>
+                    {{b.AvilableBook}}
+                </td>
+                <td>
+                    {{b.IssueBook}}
+                </td>
+
+                <td>
+                    {{b.Rack}}
+                </td>
+                <td>
+                    {{b.Category}}
+                </td>
+                
+
+
+            </tr>
+        </tbody>
+    </table>
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in books|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">{{$index+1}}</a></li>
+        </ul>
+    </nav>
+</div>
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

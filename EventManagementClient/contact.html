@@ -1,0 +1,294 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OneStop Event Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="INDEX/css/bootstrap.css" rel="stylesheet" />
+    <link href="INDEX/css/style.css" rel="stylesheet" />
+    <link href="INDEX/css/font-awesome.css" rel="stylesheet" />
+    <!-- font-awesome icons -->
+    <!-- //Custom Theme files -->
+    <!-- js -->
+    <script src="~/Scripts/angular.js"></script>
+
+    <script src="~/app/AnonymousA/app/app.js"></script>
+    <script src="~/app/AnonymousA/service/MessageService.js"></script>
+    <script src="~/app/AnonymousA/controller/MessageController.js"></script>
+    <script src="~/app/AnonymousA/service/SubscribService.js"></script>
+    <script src="~/app/AnonymousA/controller/SubscribController.js"></script>
+
+    <script src="INDEX/js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- //web-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- banner -->
+    <div class="w3ls-banner-1">
+        <!-- banner-text -->
+        <!-- //banner -->
+        <!-- header -->
+        <div class="header-w3layouts">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">OneStop</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1><a class="navbar-brand" href="http://localhost:4268/">OneStop</a></h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                                <li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
+                                <li><a class="hvr-sweep-to-right" href="http://localhost:4268/">Home</a></li>
+                                <li><a class="hvr-sweep-to-right" href="about.html">About</a></li>
+                                <li><a class="hvr-sweep-to-right" href="http://localhost:4268/Sales/">Products</a></li>
+                                <li><a class="hvr-sweep-to-right" href="events.html">Events</a></li>
+                                <li><a class="hvr-sweep-to-right" href="venues.html">Venues</a></li>
+                                <li><a class="hvr-sweep-to-right" href="gallery.html">Gallery</a></li>
+                                <li><a class="hvr-sweep-to-right" href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        </div>
+        <!-- //header -->
+    </div>
+    <!-- contact -->
+    <div class="w3ls_address_mail_footer_grids">
+        <div class="container">
+            <h2 class="heading-agileinfo">Contact<span>OneStopManagement is a professionally Manage Event Management</span></h2>
+
+            <div class="col-md-6 contact-form">
+                <h4 class="white-w3ls">Contact Form</h4>
+
+                <!--<form class="form_w3layouts" method="post" ng-controller="MessageCtrl">
+            <input type="text" placeholder="First Name" required="" ng-model="firstName">
+            <input type="text" placeholder="Last Name" required="" ng-model="lastName"><br />
+
+            <input class="email" type="email" placeholder="Email" required="" ng-model="email"><br />
+            <textarea placeholder="Message" required="" ng-model="feedback"></textarea><br />
+            <input type="submit" value="Send Message" ng-click="SendMessage()">
+        </form>-->
+
+                <form class="form_w3layouts" method="post" ng-controller="MessageCtrl">
+                    <div class="styled-input agile-styled-input-top">
+                        <input type="text" required="" ng-model="firstName">
+                        <label>First Name</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input agile-styled-input-top">
+                        <input type="text" required="" ng-model="lastName"><br />
+                        <label>Last Name</label>
+                        <span></span>
+                    </div>
+                    <div class="styled-input">
+                        <input class="email" type="email" required="" ng-model="email">
+                        <label>Email</label>
+                        <span></span>
+                    </div>
+
+                    <div class="styled-input">
+                        <textarea name="Message" required="" ng-model="feedback"></textarea>
+                        <label>Message</label>
+                        <span></span>
+                    </div>
+                    <input type="submit" value="SEND" ng-click="SendMessage()">
+                </form>
+            </div>
+
+            <div class="col-md-6 contactright">
+                <h3>Contact Address</h3>
+                <div class="w3ls_footer_grid_left">
+                    <div class="wthree_footer_grid_left">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <p>41,Shekertek,Mohammedpur <span>Dhaka 1207.</span></p>
+                </div>
+                <div class="w3ls_footer_grid_left">
+                    <div class="wthree_footer_grid_left">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <p>+8801681 399787 <span>+8801740 571961</span><span>+8801515 217693</span></p>
+                </div>
+                <div class="w3ls_footer_grid_left">
+                    <div class="wthree_footer_grid_left">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                        <a href="mailto:info@example.com">info@OneStopManagement.com</a>
+                        <span><a href="mailto:info@example.com">miahjewel22@gmail.com</a></span>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <br />
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.8834965454653!2d90.38372331434843!3d23.751533594651292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8afc5d28667%3A0x7e461056d052d494!2sPanthapath%2C+Dhaka+1205%2C+Bangladesh!5e0!3m2!1sen!2sin!4v1532588353210" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- //contact -->
+    <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="col-md-3 foot-left">
+                <h3>About Us</h3>
+
+                <p>OneStop Event Management, always ensure that we bring out outstanding events.</p>
+            </div>
+            <div class="col-md-3 foot-left">
+                <h3>Get In Touch</h3>
+                <p>Stay connected with us </p>
+
+                <div class="contact-btm">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    <p>Mohammedpur,Dhaka 1207.</p>
+                </div>
+                <div class="contact-btm">
+                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                    <p>+8801681 399787</p>
+                    <div class="contact-btm">
+                    </div>
+                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                    <p><a href="mailto:example@email.com">miahjewel22@gmail.com</a></p>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="col-md-3 foot-left">
+                <h3>Latest Events</h3>
+                <ul>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><img src="images/g1.jpg" alt="" class="img-responsive"></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><img src="images/g2.jpg" alt="" class="img-responsive"></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><img src="images/g3.jpg" alt="" class="img-responsive"></a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><img src="images/g4.jpg" alt="" class="img-responsive"></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3 foot-left">
+                <h3>Subscribe</h3>
+                <p>Subscribe To Our Newsletter To Stay Up-To-Date With OneStop Event Management</p>
+
+                <!--<form method="post" class="subscribe_form" ng-controller="SubscriberCtrl">
+                    <div class="email-news">
+                        <input type="email" placeholder="Email" required="" ng-model="email">
+                    </div>
+                    <div class="sub-news">
+                        <input type="submit" value="subscribe" ng-click="Subscrib()">
+                    </div>
+                </form>-->
+
+                <form method="post" class="subscribe_form" ng-controller="SubscriberCtrl">
+                    <input type="email" Name="Enter Your Email" placeholder="Enter Your Email" required="" ng-model="email">
+                    <input type="submit" value="Subscribe" ng-click="Subscrib()">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- /footer-top -->
+    <!-- footer -->
+    <div class="copy-right">
+        <div class="container">
+            <div class="col-md-6 col-sm-6 col-xs-6 copy-right-grids">
+                <div class="copy-left">
+                    <p>&copy; 2018 OneStopManagement. All rights reserved </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 top-middle">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!-- //footer -->
+    <!-- bootstrap-modal-pop-up -->
+    <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Events
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/g8.jpg" alt=" " class="img-responsive" />
+                    <p>
+                        Typically hosted by either the parents of the bride or the parents of the groom,
+                        this party should take place within one to three months of the engagement.
+                        Invitations are often extended to immediate family and a small group of friends,
+                        as all guests of the engagement party will also be invited to the wedding.
+                        <i>
+                            " Everything You Need to Know....
+                        </i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //bootstrap-modal-pop-up -->
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+    <script src="INDEX/js/jquery-2.2.3.min.js"></script>
+
+    <!-- skills -->
+
+    <script src="INDEX/js/move-top.js"></script>
+    <script src="INDEX/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script src="js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+</body>
+</html>

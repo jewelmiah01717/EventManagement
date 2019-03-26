@@ -1,0 +1,155 @@
+﻿<div ng-controller="bookInfoCtrl">
+    <h2 style="text-align:center;">Book</h2>
+    <div class="container">
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog" style="margin-left:5%">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Book</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form class="form-horizontal" id="frm" name="frm">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" ng-model="addbook.Id"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Product Name : </p>
+                                    <input type="text" class="form-control" ng-model="addbook.BookName" id="bn" name="bn" />
+                                </div>
+                                <!--<div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Author Name : </p>
+                                    <input type="text" class="form-control" ng-model="addbook.BookAuth" id="an" name="an" />
+                                </div>-->
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Available Product : </p>
+                                    <input type="text" class="form-control" ng-model="addbook.AvilableBook" id="avbook" name="avbook" />
+                                </div>
+                                <!--<div style="display:none;" class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Issue Book : </p>
+                                    <input type="text" class="form-control" ng-model="addbook.IssueBook" id="ibook" name="ibook" />
+                                </div>-->
+                                <!--<div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Rack : </p>
+                                    <div class="col-sm-10">
+                                        <select ng-model="addbook.RackId" ng-controller="rackctrl">
+
+
+                                            <option ng-repeat="x in rack" value="{{x.Id}}">{{x.RackName}}</option>
+                                        </select><br />
+                                    </div>
+                                </div>-->
+                                <!--<div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Issue Book : </p>
+                                    <div class="col-sm-10">
+                                        <select ng-model="addbook.CategoryId" ng-controller="categoryctrl">
+
+                                            <option ng-repeat="x in cat" value="{{x.Id}}">{{x.CategoryName}}</option>
+                                        </select><br />
+                                    </div>
+                                </div>-->
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Remark : </p>
+                                    <input type="text" class="form-control" ng-model="addbook.BookStatus" id="bs" name="bs" />
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="save()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-default" ng-click="update()" data-dismiss="modal">Update</button>
+
+                        <label ng-model="addbook.Id"></label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-info btn-lg"
+            data-toggle="modal" data-target="#myModal1">
+        Add New
+    </button>
+
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText" placeholder="search by book name" class="form-control" id="bn" name="bn" />
+
+        </div>
+    </form>
+    <hr />
+    <table class="table table-bordered table-hover" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">ProductID</th>
+                <th style="text-align:center" ng-click="sort('BookName')">
+                    Product Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='BookName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <!--<th style="text-align:center" ng-click="sort('BookAuth')">
+                    Author
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='BookAuth'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>-->
+                <th style="text-align:center">
+                    Available Product
+                </th>
+
+                <!--<th style="text-align:center">Issue Book</th>
+                <th style="text-align:center">Rack</th>-->
+                <th style="text-align:center">Category</th>
+                <th style="text-align:center">Product Status</th>
+                <th style="text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in books|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>
+
+                    {{b.Id}}
+                </td>
+                <td>
+
+                    {{b.BookName}}
+                </td>
+                <td>
+                    {{b.BookAuth}}
+                </td>
+                <td>
+                    {{b.AvilableBook}}
+                </td>
+                <td>
+                    {{b.IssueBook}}
+                </td>
+                <td>
+                    {{b.Rack}}
+                </td>
+                <td>
+                    {{b.Category}}
+                </td>
+
+                <td>
+                    {{b.BookStatus}}
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-md" ng-click="edit(b.Id)" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-danger btn-md" ng-click="delete(b.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in books|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">Page-{{$index+1}}</a></li>
+        </ul>
+    </nav>
+</div>
+
+    

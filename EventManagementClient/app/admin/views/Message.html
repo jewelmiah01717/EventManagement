@@ -1,0 +1,49 @@
+﻿<div ng-controller="MessageCtrl">
+    <h2 style="text-align:center;">Message</h2>
+
+ 
+    <table class="table table-hover" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">First Name</th>
+                <th style="text-align:center">Last Name</th>
+                <th style="text-align:center">Email</th>
+                <th style="text-align:center">Feedback</th>
+                <th style="text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in Messages|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>
+                    {{b.FirstName}}
+                </td>
+                <td>
+                    {{b.LastName}}
+                </td>
+                <td>
+                    {{b.Email}}
+                </td>
+                <td>
+                    {{b.Feedback}}
+                </td>
+
+                <td>
+                 
+                    <button class="btn btn-primary btn-md" ng-click="delete(b.ID)"><span class="glyphicon glyphicon-trash"></span></button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in Messages|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">Page-{{$index+1}}</a></li>
+        </ul>
+    </nav>
+</div>
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+

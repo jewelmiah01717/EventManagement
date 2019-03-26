@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<div class="col-md-12" style="margin-top:15px;" ng-show="auth.authenticated">
+
+
+
+    <div class="sidebar-menu">
+        <header class="logo" style="margin-top:15px">
+
+            <h1><span id="logo">OneStop Management</span></h1>
+
+
+        </header>
+        <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+        <div class="menu">
+            <ul id="menu" style="height:800px;">
+
+                <li id="menu-academico-boletim"><a href="#/book">Product</a></li>
+                <li id="menu-academico-avaliacoes"><a href="#/category">Category</a></li>
+
+                <li id="menu-academico-avaliacoes"><a href="#/Message">Message</a></li>
+                <li id="menu-academico-avaliacoes"><a href="#/Subscriber">Subscriber</a></li>
+
+
+
+
+                <li>
+                    <a href="#/maintanceuser"><i class="lnr lnr-chart-bars"></i> <span>All User</span></a>
+
+                </li>
+
+
+                <li>
+                    <a href="#/Request"><i class="lnr lnr-chart-bars"></i> <span>Request from User</span></a>
+
+                </li>
+
+                @*<li>
+                        <a href="#/report"><i class="lnr lnr-chart-bars"></i> <span>Report</span></a>
+
+                    </li>*@
+
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+<ng-view />
+
+
+@section scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+
+    <script>
+        angular.module("routapp", ['ngRoute', "ui.bootstrap"])
+      .config(function ($locationProvider) {
+          $locationProvider.hashPrefix('');
+      })
+      .config(function ($routeProvider) {
+
+          $routeProvider.when("/", {
+              templateUrl: "/app/admin/views/login.html"
+          });
+          $routeProvider.when("/book", {
+              templateUrl: "/app/admin/views/Book1.html"
+          });
+          $routeProvider.when("/category", {
+              templateUrl: "/app/admin/views/category.html"
+          });
+
+          $routeProvider.when("/Rack", {
+              templateUrl: "/app/admin/views/Rack.html"
+          });
+          $routeProvider.when("/Message", {
+              templateUrl: "/app/admin/views/Message.html"
+          });
+          $routeProvider.when("/Subscriber", {
+              templateUrl: "/app/admin/views/subscriber.html"
+          });
+          $routeProvider.when("/Purchase", {
+              templateUrl: "/app/admin/views/Purchase.html"
+          });
+          $routeProvider.when("/Member", {
+              templateUrl: "/app/admin/views/Member.html"
+          } );
+          $routeProvider.when( "/report", {
+              templateUrl: "/app/admin/views/Report.html"
+          } );
+          $routeProvider.when("/Request", {
+              templateUrl: "/app/admin/views/Request.html"
+          });
+          $routeProvider.when("/maintanceuser", {
+              templateUrl: "/app/admin/views/maintanceuser.html"
+          });
+          $routeProvider.when("/login", {
+              templateUrl: "/app/admin/views/login.html"
+          });
+          $routeProvider.when("/Allbook", {
+              templateUrl: "/app/admin/views/Allbook.html"
+          });
+          $routeProvider.when("/History", {
+              templateUrl: "/app/admin/views/History.html"
+          });
+          $routeProvider.when("/IssueBook", {
+              templateUrl: "/app/admin/views/IssueBook.html"
+          } );
+          $routeProvider.when( "/Historyfine", {
+              templateUrl: "/app/admin/views/Finehis.html"
+          } );
+          $routeProvider.when("/return", {
+              templateUrl: "/app/admin/views/Return.html"
+          });
+          $routeProvider.when("/Fine", {
+              templateUrl: "/app/admin/views/Fine.html"
+          });
+          $routeProvider.otherwise({
+              templateUrl: "/app/admin/views/login.html"
+          });
+      })
+    </script>
+    @*<script src="~/app/admin/controller/adminCtrl.js"></script>*@
+    <script src="~/app/admin/service/authStore.js"></script>
+    <script src="~/app/admin/service/loginSvc.js"></script>
+    <script src="~/app/admin/service/remotecall.js"></script>
+    <script src="~/app/admin/filters/filters.js"></script>
+    <script src="~/app/admin/controller/Booksctrl.js"></script>
+    <script src="~/app/admin/controller/Categoriesctrl.js"></script>
+    <script src="~/app/admin/controller/Login.js"></script>
+    <script src="~/app/admin/controller/Member.js"></script>
+    <script src="~/app/admin/controller/purchase.js"></script>
+    <script src="~/app/admin/controller/rackctrl.js"></script>
+    <script src="~/app/admin/controller/AllbookCtrl.js"></script>
+    <script src="~/app/admin/controller/IssueBook.js"></script>
+    <script src="~/app/admin/controller/bookInfo.js"></script>
+    <script src="~/app/admin/controller/adminInfo.js"></script>
+    <script src="~/app/admin/controller/history.js"></script>
+    <script src="~/app/admin/controller/Fine.js"></script>
+    <script src="~/app/admin/controller/requestctrl.js"></script>
+    <script src="~/app/admin/controller/usermaintance.js"></script>
+    <script src="~/app/admin/controller/Returnbook.js"></script>
+    <script src="~/app/admin/controller/report.js"></script>
+    <script src="~/app/admin/controller/Finehis.js"></script>
+    <script src="~/app/admin/controller/MessageCtrl.js"></script>
+    <script src="~/app/admin/controller/subscriber.js"></script>
+
+}

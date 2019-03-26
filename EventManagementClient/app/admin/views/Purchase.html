@@ -1,0 +1,120 @@
+﻿<div ng-controller="purctrl">
+    <h2 style="text-align:center;">Purchase</h2>
+    <div class="container">
+
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog" style="margin-left:5%">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Purchase</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form class="form-horizontal" id="frm" name="frm">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" ng-model="Purchase.PurId"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Purchase Date : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.PurDate" id="pdate" name="pdate" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Purchase From : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.PurFrom" id="pfrom" name="pfrom" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Purchase Number : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.PurNo" id="pnumber" name="pnumber" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p>Book Name : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.PurchaseBookName" id="bname" name="bname" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p>Quantity : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.Quantity" id="qty" name="qty" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p>Rate : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.Rate" id="rate" name="rate" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p>Amount : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.Amount" id="amnt" name="amnt" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p>Remark : </p>
+                                    <input type="text" class="form-control" ng-model="Purchase.Status" id="sts" name="sts" />
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" ng-click="save()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-primary" ng-click="update()" data-dismiss="modal">Update</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-info btn-lg"
+            data-toggle="modal" data-target="#myModal1">
+        Add New
+    </button>
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText" class="form-control" id="bn" name="bn" />
+
+        </div>
+    </form>
+    <table class="table table-hover" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">Purchase Date</th>
+                <th style="text-align:center">Purchase From</th>
+                <th style="text-align:center">Purchase Number</th>
+                <th style="text-align:center">Book Name</th>
+                <th style="text-align:center">Quantity</th>
+                <th style="text-align:center">Rate</th>
+                <th style="text-align:center">Amount</th>
+                <th style="text-align:center">Status</th>
+                <th style="text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="p in Purchaseload|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>{{p.PurDate}}</td>
+                <td>{{p.PurFrom}}</td>
+                <td>{{p.PurNo}}</td>
+                <td>{{p.PurchaseBookName}}</td>
+                <td>{{p.Quantity}}</td>
+                <td>{{p.Rate}}</td>
+                <td>{{p.Amount}}</td>
+                <td>{{p.Status}}</td>
+                <td>
+                    <button class="btn btn-primary btn-md" ng-click="edit(p.PurId)" data-toggle="modal" data-target="#myModal1"><span class="	glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-danger btn-md" id="btnedit" ng-click="delete(p.PurId)"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in Purchaseload|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">Page-{{$index+1}}</a></li>
+        </ul>
+    </nav>
+</div>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

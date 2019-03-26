@@ -1,0 +1,174 @@
+﻿<div ng-controller="finectrl">
+    <h2 style="text-align:center">Fine</h2>
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText" class="form-control" id="bn" name="bn" />
+
+        </div>
+    </form>
+
+    <table class="table table-bordered" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">#</th>
+                <th style="text-align:center">BookId</th>
+                <th style="text-align:center">Eamil</th>
+                <th style="text-align:center">Issue Date</th>
+                <th style="text-align:center">Due Date</th>
+                <th style="text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in fin|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>
+                    {{b.Id}}
+                </td>
+                <td>
+                    {{b.BookId}}
+                </td>
+                <td>
+                    {{b.username}}
+                </td>
+
+                <td>
+                    {{b.IssueDate}}
+                </td>
+                <td>
+                    {{b.DueDate}}
+                </td>
+
+                <td>
+                    
+                    <input type="button" class="btn btn-primary btn-md" value="Take Fine" ng-click="forfine(b.Id);mod(b.BookId)" data-toggle="modal" data-target="#myAddModal11" />
+                   
+                    
+                        <input type="button" class="btn btn-primary btn-md" value="Calculate Fine" ng-click="forfine(b.Id)" data-toggle="modal" data-target="#myAddModal1" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in fin|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">{{$index+1}}</a></li>
+        </ul>
+    </nav>
+    <div class="modal fade" id="myAddModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span style="color:red;" class="fa fa-times-circle "></span></button>
+                    <h4 class="modal-title" id="myModalLabel">Accept Fine</h4>
+                </div>
+               
+                <div class="modal-body">
+
+                    <div>
+                        <label class="control-label">Issue Date<span>*</span></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="addissue.IssueDate"
+                                   is-open="popup.opened" datepicker-options="dateOptions" ng-click="openfn()" required />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openfn()"><span class="glyphicon glyphicon-calendar"></span>Calander</button>
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <div>
+                        <label class="control-label">Return Date<span>*</span></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="addissue.DueDate"
+                                   is-open="popup2.opened" datepicker-options="dateOptions" ng-click="openfn2()" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openfn2()"><span class="glyphicon glyphicon-calendar">Calander</span></button>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button ng-click="diffDate(addissue.IssueDate,addissue.DueDate)" type="button" data-dismiss="modal" class="btn btn-primary">Caculate</button>
+                </div>
+            </div>
+
+        </div>
+       
+    </div>
+
+    <div class="modal fade" id="myAddModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span style="color:red;" class="fa fa-times-circle "></span></button>
+                    <h4 class="modal-title" id="myModalLabel">Accept Fine</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="display:none;">
+                        bookid: <input type="text" ng-model="modal.Id" readonly />
+                        BookName: <input type="text" ng-model="modal.BookName" readonly />
+                        <!--AvilableBook: <input type="text" ng-model="modal.AvilableBook" readonly />-->
+                        <!--<label ng-model="modal.IssueBook"></label>-->
+                        IssueBook: <input type="text" ng-model="modal.IssueBook" readonly />
+
+
+                        <!--<form role="form">
+            <div class="form-group">
+                <label>Name</label>
+                <input ng-model="RoleName" class="form-control" placeholder="Enter Role Name">
+            </div>
+        </form>-->
+                        <!--id: <input type="text" ng-model="fin.Id" readonly />-->
+                        <!--<label ng-model="fin.Id"></label>-->
+                        <!--id: <input type="text" ng-model="fin1.Id" readonly />-->
+                        Username: <input type="text" ng-model="fin1.username" readonly />
+                        bookid: <input type="text" ng-model="fin1.BookId" readonly />
+
+
+
+
+                        <!--AvilableBook: <input type="text" ng-model="modal.AvilableBook" readonly />-->
+                        <!--<label ng-model="modal.IssueBook"></label>-->
+                        IssueBook: <input type="text" ng-model="fin1.IssueDate" readonly />
+                        IssueBook: <input type="text" ng-model="fin1.DueDate" readonly />
+                    </div>
+
+
+                    <div style="margin-left:50px;">
+                        <p>Amount <span>*</span></p>
+                        
+                        <input type="text" class="form-control" ng-model="fin1.amount" name="amount" id="amount"
+                               required />
+                    </div>
+                   
+
+
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="reset" data-dismiss="modal" value="reset" class="btn btn-warning">Reset</button>-->
+                    <button ng-click="savefinehis();Accept(fin1.Id)" type="button" data-dismiss="modal" class="btn btn-primary">Save to Fine history</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+</div>
+
+
+
+
+<!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+
+

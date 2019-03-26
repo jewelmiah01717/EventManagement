@@ -1,0 +1,34 @@
+﻿
+    <div class="error_page" ng-controller="signupController">
+
+        <div class="error-top" style="margin-top:70px;">
+            <h2 class="inner-tittle page">Register</h2>
+            <div class="login">
+                <h3 class="inner-tittle t-inner"></h3>
+                <form>
+                    <input type="text" class="text" ng-model="registration.Name" value="Name" placeholder="Name" >
+                    <input type="text" class="text" ng-model="registration.Address" value="Address" placeholder="Address" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Address'; }">
+                    <input type="text" class="text" ng-model="registration.PhoneNumber" value="PhoneNumber" placeholder="Phone Number" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'PhoneNumber'; }">
+                    <input type="text" class="text" ng-model="registration.Email" value="Email" placeholder="Email" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Email'; }">
+
+                    <!--<input type="text" class="text" ng-model="registration.Gender" value="Gender" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Gender'; }">-->
+                    <input type="password" value="Password" ng-model="registration.Password" placeholder="Password" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Password'; }">
+                    <input type="password" value="ConfirmPassword" ng-model="registration.ConfirmPassword" placeholder="Confirm Password" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Password'; }">
+                    <div class="sign-up" style="margin-right:20px">
+                        <input ng-click="signUp()" ng-disabled="isProcessing"
+                               type="button" class="btn btn-block btn-success"
+                               value="{{RegisterBtnText}}" />
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="new">
+                        
+                        <p class="sign">Already registered ? <a href="#/login">Login</a></p>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>

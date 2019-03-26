@@ -1,0 +1,92 @@
+﻿<div ng-controller="categoryctrl">
+    <h2 style="text-align:center;">Category</h2>
+    <div class="container">
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog" style="margin-left:5%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Category</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form class="form-horizontal" id="frm" name="frm">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" ng-model="addcat.Id"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Category : </p>
+                                    <input type="text" class="form-control" ng-model="addcat.CategoryName" id="ct" name="ct" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                    <p> Remark : </p>
+                                    <input type="text" class="form-control" ng-model="addcat.CategoryStatus" id="cs" name="cs" />
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="save()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-default" ng-click="update()" data-dismiss="modal">Update</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-info btn-lg"
+            data-toggle="modal" data-target="#myModal1">
+        Add New
+    </button>
+
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText"  class="form-control" id="bn" name="bn" />
+
+        </div>
+    </form>
+    <hr />
+    
+    <table class="table table-hover" style="text-align:center">
+        <thead>
+            <tr>
+                <th style="text-align:center">Category</th>
+                <th style="text-align:center">Category Status</th>
+                <th style="text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="b in cat|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                <td>
+                    {{b.CategoryName}}
+                </td>
+                <td>
+                    {{b.CategoryStatus}}
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-md" ng-click="edit(b.Id)" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-edit"></span></button>
+                    <!--<button class="btn btn-primary btn-md" ng-click="delete(b.Id)"><span class="glyphicon glyphicon-trash"></span></button>-->
+
+                </td>
+            </tr>
+        </tbody>
+    </table>  
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li ng-repeat="b in cat|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">Page-{{$index+1}}</a></li>
+        </ul>
+    </nav>
+</div>
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+

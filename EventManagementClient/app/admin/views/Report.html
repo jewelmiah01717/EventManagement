@@ -1,0 +1,38 @@
+﻿<div ng-controller="report">
+    <h2 style="text-align:center">All Book</h2>
+    <div>
+        <table class="table table-bordered" style="text-align:center">
+            <thead>
+                <tr>
+                    <th style="text-align:center">Book ID</th>
+                    <th style="text-align:center">Book Name</th>
+                    <th style="text-align:center">BookAuth</th>
+                    <th style="text-align:center">AvilableBook</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="b in books">
+                    <td>
+                        {{b.Id}}
+                    </td>
+                    <td>
+                        {{b.BookName}}
+                    </td>
+                    <td>
+                        {{b.BookAuth}}
+                    </td>
+                    <td>
+                        {{b.AvilableBook}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+

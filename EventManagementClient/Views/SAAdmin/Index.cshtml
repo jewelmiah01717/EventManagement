@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "RPS Library";
+    Layout = "~/Views/Shared/_LayoutSalesAdmin.cshtml";
+}
+<ng-view />
+@section scripts {
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script>
+        angular.module("sportsStoreAdmin", ['ngRoute'])
+            .config(function ($locationProvider) {
+                $locationProvider.hashPrefix('');
+            })
+            .config(function ($routeProvider) {
+                $routeProvider.when("/", {
+                    templateUrl: "/SApp/admin/views/anonymoushome.html"
+                });
+                $routeProvider.when("/home", {
+                    templateUrl: "/SApp/admin/views/products.html"
+                });
+                $routeProvider.when("/products", {
+                    templateUrl: "/SApp/admin/views/products.html"
+                });
+                $routeProvider.when("/order", {
+                    templateUrl: "/SApp/admin/views/order.html"
+                });
+                $routeProvider.when("/newusers", {
+                    templateUrl: "/SApp/admin/views/newusers.html"
+                });
+                $routeProvider.when("/StockIn", {
+                    templateUrl: "/SApp/admin/views/Stockin.html"
+                });
+                $routeProvider.otherwise({
+                    templateUrl: "/SApp/admin/views/anonymoushome.html"
+                });
+            })
+    </script>
+    <script src="~/SApp/admin/controller/adminCtrl.js"></script>
+    <script src="~/SApp/admin/service/authStore.js"></script>
+    <script src="~/SApp/admin/service/loginSvc.js"></script>
+    <script src="~/SApp/admin/service/remoteCallSvc.js"></script>
+    <script src="~/SApp/admin/controller/productsCtrl.js"></script>
+    <script src="~/SApp/admin/controller/orderCtrl.js"></script>
+    <script src="~/SApp/admin/controller/stockinCtrl.js"></script>
+    <script src="~/SApp/admin/controller/userCtrl.js"></script>
+    <script src="~/SApp/admin/filters/filters.js"></script>
+
+
+
+}
+
+

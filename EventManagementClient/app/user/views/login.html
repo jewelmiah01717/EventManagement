@@ -1,0 +1,41 @@
+﻿
+<div class="error_page">
+    <!--/login-top-->
+
+    <div class="error-top">
+        <h2 class="inner-tittle page">User</h2>
+        <div class="login">
+            <h3 class="inner-tittle t-inner">Login</h3>
+            <div class="buttons login">
+                <ul>
+                    <li><a href="#" class="hvr-sweep-to-right">Facebook</a></li>
+                    <li class="lost"><a href="#" class="hvr-sweep-to-left">Twitter</a> </li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <form>
+                <input placeholder="Enter UserName" ng-model="loginModel.username" id="email"
+                       type="text" class="form-control" />
+                <!--<input type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">-->
+                <!--<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">-->
+                <input placeholder="Enter Your Password" ng-model="loginModel.password" id="password"
+                       type="password" class="form-control" />
+                <div style="margin-right:25px">
+                    <input style="margin-right:200px;" ng-click="signin()" ng-disabled="isProcessing"
+                           type="button"  class="btn btn-block btn-success"
+                           value="Login" />
+                </div>
+                <!--<div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>-->
+                <div class="clearfix"></div>
+
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <!--//login-top-->
+</div>
+

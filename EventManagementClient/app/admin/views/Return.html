@@ -1,0 +1,135 @@
+﻿<div ng-controller="returnbook"> 
+    <h1 style="text-align:center;">Return Book</h1>
+    <form class="form-inline" style="float:right">
+        <div class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+            <input type="search" ng-model="searchText"  class="form-control" id="bn" name="bn" />
+
+        </div>
+    </form>
+    <hr />
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>BookId</th>
+                    <th>IssueDate</th>
+                    <th>DueDate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="b in Issue|filter:searchText|orderBy:sortKey:reverse|range:selectedPage:pageSize">
+                    <td>
+                        {{b.username}}
+                    </td>
+                    <td>
+                        {{b.BookId}}
+                    </td>
+                    <td>
+                        {{b.IssueDate}}
+                    </td>
+                    <td>
+                        {{b.DueDate}}
+                    </td>
+
+                    <td>
+                       
+                         <input type="button" data-toggle="modal" data-target="#myAddModal" class="btn btn-default" value="Accept Book" ng-click="mod(b.BookId);bookreturn(b.Id)" />
+                        <input type="button" data-toggle="modal" data-target="#myAddModal1" class="btn btn-default" value="Add To Fine" ng-click="forfine(b.Id)" />
+                        
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav class="text-right">
+            <ul class="pagination pagination-sm">
+                <li ng-repeat="b in Issue|pageCount:pageSize" ng-class="getPageClass($index + 1)"><a ng-click="selectPage($index + 1)" href="">{{$index+1}}</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- <script src="../Controller/IssueBook.js"></script>-->
+    <!--Modal-->
+    <div class="modal fade" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span style="color:red;" class="fa fa-times-circle "></span></button>
+                    <h4 class="modal-title" id="myModalLabel">Accept Book</h4>
+                </div>
+                <div style="display:none;">
+                    <div class="modal-body">
+                        <!--<form role="form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input ng-model="RoleName" class="form-control" placeholder="Enter Role Name">
+                </div>
+            </form>-->
+                        bookid: <input type="text" ng-model="modal.Id" readonly />
+                        BookName: <input type="text" ng-model="modal.BookName" readonly />
+                        <!--AvilableBook: <input type="text" ng-model="modal.AvilableBook" readonly />-->
+                        <!--<label ng-model="modal.IssueBook"></label>-->
+                        IssueBook: <input type="text" ng-model="modal.IssueBook" readonly />
+
+
+                        id: <input type="text" ng-model="ret.Id" readonly />
+
+                    </div>
+                </div>
+                <div>
+                    <h3 style="text-align:center;">Are you Sure?</h3>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="reset" data-dismiss="modal" value="reset" class="btn btn-warning">Reset</button>-->
+                    <button ng-click="Accept(ret.Id);" type="button" data-dismiss="modal" class="btn btn-primary">Confirm Accept</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="myAddModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span style="color:red;" class="fa fa-times-circle "></span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add to fine</h4>
+                </div>
+                <div style="display:none;">
+                    <div class="modal-body">
+                        <!--<form role="form">
+            <div class="form-group">
+                <label>Name</label>
+                <input ng-model="RoleName" class="form-control" placeholder="Enter Role Name">
+            </div>
+        </form>-->
+                        id: <input type="text" ng-model="fin.Id" readonly />
+                        <!--<label ng-model="fin.Id"></label>-->
+                        bookid: <input type="text" ng-model="fin.BookId" readonly />
+                        BookName: <input type="text" ng-model="fin.username" readonly />
+                        <!--AvilableBook: <input type="text" ng-model="modal.AvilableBook" readonly />-->
+                        <!--<label ng-model="modal.IssueBook"></label>-->
+                        IssueBook: <input type="text" ng-model="fin.IssueDate" readonly />
+                        IssueBook: <input type="text" ng-model="fin.DueDate" readonly />
+
+
+                    </div>
+                   
+                </div>
+                <div>
+                    <h3 style="text-align:center;">Are you Sure?</h3>
+                </div>
+
+                <div class="modal-footer">
+                    <!--<button type="reset" data-dismiss="modal" value="reset" class="btn btn-warning">Reset</button>-->
+                    <button ng-click="savefine();delete(fin.Id);" type="button" data-dismiss="modal" class="btn btn-primary">Save to Fine</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>

@@ -1,0 +1,120 @@
+﻿<div ng-controller="IssueBook">
+    <div class="row">
+
+
+
+
+
+
+        <div class="col-md-8" style="height:auto;background-color:#f1eeee;color:#fa7979;">
+            <div style="margin-left:30px;margin-bottom:100px">
+                <h3 style="padding-top:10px;text-align:center; color:black;">Issue infomation</h3><hr />
+                <form name="frmbooking" style="margin-left:30px">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!--div class="form-group" ng-class="{'has-error':frmbooking.Address.$invalid && !frmbooking.Address.$pristine}">-->
+                            <p>Book ID <span>*</span></p>
+                            <span class="icon-case"><i class="fa fa-book"></i></span>
+                            <input type="text" class="form-control" ng-model="addissue.BookId" name="BookId" id="BookId"
+                                   required />
+
+                            <!--</div>-->
+                            <button ng-click="BookSearch(addissue.BookId)">Search</button>
+                            <!--<input type="button" class="btn btn-warning btn-sm text-center my-btn" value="Search" ng-click="BookSearch(addissue.BookId)" />-->
+
+                            <div style="margin-top:30px;" class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                <p> BookName </p>
+
+                                <input type="text" class="form-control" ng-model="search.BookName" id="BookName" name="BookName" readonly />
+
+
+                            </div>
+                            <div style="display:none" class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                <p> IssueBook </p>
+
+                                <input type="text" class="form-control" ng-model="search.IssueBook" id="IssueBook" name="IssueBook" readonly />
+                            </div>
+                            <div style="display:none" class="form-group" ng-class="{'has-error':frmbooking.PassengerName.$invalid && !frmbooking.PassengerName.$pristine}">
+                                <p> AvilableBook </p>
+
+                                <input type="text" class="form-control" ng-model="search.AvilableBook" id="AvilableBook" name="AvilableBook" readonly />
+                            </div>
+
+
+
+
+
+                            <div>
+                                <label class="control-label">Issue Date<span>*</span></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="addissue.IssueDate"
+                                           is-open="popup.opened" datepicker-options="dateOptions" ng-click="openfn()" required />
+                                    <!--<span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openfn()"><span class="glyphicon glyphicon-calendar"></span>Calander</button>
+                                    </span>-->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="col-lg-5">
+
+                            <!--<div class="form-group">-->
+                            <p>Email Address<span>*</span></p>
+                            <span class="icon-case"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" ng-model="addissue.username" id="MemberId" name="MemberId" />
+                            <!--</div>-->
+                            <!--<input type="button" class="btn btn-warning btn-sm text-center my-btn" value="Search" ng-click="userSearch(addissue.username)" />-->
+                            <button ng-click="userSearch(addissue.username)">Search</button>
+                            <div class="form-group" style="margin-top:30px;">
+                                <p> Name <span></span></p>
+
+                                <input type="text" class="form-control" ng-model="userm.Name" id="MemberName" name="Name" readonly />
+
+
+                            </div>
+                            <div>
+                                <label class="control-label">Due Date<span>*</span></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="addissue.DueDate"
+                                           is-open="popup2.opened" datepicker-options="dateOptions" ng-click="openfn2()" />
+                                    <!--<span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openfn2()"><span class="glyphicon glyphicon-calendar"></span>Calander</button>
+                                    </span>-->
+                                </div>
+
+                            </div>
+                            <input type="button" class="btn btn-warning btn-sm text-center my-btn" value="Issue Book" ng-click="save();savehis()" />
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div>
+                        <div class="input-group">
+
+
+
+
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+</div>

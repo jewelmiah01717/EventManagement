@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div class="col-md-12" style="margin-top:15px" ng-show="auth.authenticated">
+
+    <div class="sidebar-menu">
+        <header class="logo" style="margin-top:30px">
+            <h1><span id="logo">OneStop </span></h1>
+
+
+        </header>
+        <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+        <div class="menu">
+            <ul id="menu">
+                <li id="menu-academico-boletim"><a href="#/book">Product</a></li>
+                <li id="menu-academico-boletim"><a href="#/request">Request Product</a></li>
+                <li id="menu-academico-boletim"><a href="#/History">History</a></li>
+                <li id="menu-academico-boletim"><a href="#/law">Rules</a></li>
+                @*<li id="menu-academico-boletim"><a href="#/image">Image Gallery</a></li>*@
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-view />
+
+@section scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+
+    <script>
+        angular.module("userapp", ['ngRoute'])
+      .config(function ($locationProvider) {
+          $locationProvider.hashPrefix('');
+      })
+      .config(function ($routeProvider) {
+
+          $routeProvider.when("/", {
+              templateUrl: "/app/user/views/login.html"
+          });
+          $routeProvider.when("/book", {
+              templateUrl: "/app/user/views/Book.html"
+          });
+
+          $routeProvider.when("/signup", {
+              templateUrl: "/app/user/views/signup.html"
+          });
+          $routeProvider.when( "/request", {
+              templateUrl: "/app/user/views/request.html"
+          } );
+
+          $routeProvider.when( "/History", {
+              templateUrl: "/app/user/views/index.html"
+          } );
+          $routeProvider.when( "/image", {
+              templateUrl: "/app/user/views/gallery.html"
+          } );
+          $routeProvider.when( "/law", {
+              templateUrl: "/app/user/views/LawofLibrary.html"
+          } );
+
+
+          $routeProvider.when("/login", {
+              templateUrl: "/app/user/views/login.html"
+          });
+
+
+          $routeProvider.otherwise({
+              templateUrl: "/app/user/views/login.html"
+          });
+      })
+    </script>
+    <script src="~/app/user/controller/userCtrl.js"></script>
+    <script src="~/app/user/service/authStore.js"></script>
+    <script src="~/app/user/service/loginSvc.js"></script>
+    <script src="~/app/user/service/remotecall.js"></script>
+    <script src="~/app/user/filters/filters.js"></script>
+    <script src="~/app/user/controller/Booksctrl.js"></script>
+    <script src="~/app/user/controller/Login.js"></script>
+    <script src="~/app/user/controller/signup.js"></script>
+    <script src="~/app/user/controller/request.js"></script>
+
+}
+
+
+
